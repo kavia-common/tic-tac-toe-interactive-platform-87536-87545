@@ -1,0 +1,63 @@
+/* ===== Square Cell ===== */
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: var(--cell-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: var(--text-primary);
+  /* Prevent text selection on rapid clicks */
+  user-select: none;
+}
+
+.square:hover:not(:disabled) {
+  background-color: var(--cell-hover);
+  transform: scale(1.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.square:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.square:disabled {
+  cursor: default;
+}
+
+/* X marker colour */
+.square--x {
+  color: var(--color-x);
+}
+
+/* O marker colour */
+.square--o {
+  color: var(--color-o);
+}
+
+/* Winning cell highlight with pulse animation */
+.square--winning {
+  background-color: var(--win-highlight) !important;
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 0 0 var(--win-highlight); }
+  to   { box-shadow: 0 0 0 8px rgba(255, 209, 102, 0); }
+}
+
+/* Responsive sizing */
+@media (max-width: 400px) {
+  .square {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+}

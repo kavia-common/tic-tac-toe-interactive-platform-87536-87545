@@ -1,104 +1,133 @@
-/* CSS Variables for Theme Management */
+/* ============================================================
+   CSS Variables — Theme Management
+   Light theme is the default; dark theme toggled via [data-theme="dark"].
+   ============================================================ */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  /* Core palette */
+  --bg-primary:    #ffffff;
+  --bg-secondary:  #f4f6f9;
+  --text-primary:  #1a1a1a;
+  --text-muted:    #6b7280;
+  --border-color:  #e2e8f0;
+
+  /* Player colours */
+  --color-x:       #e87a41;   /* KAVIA orange — Player X */
+  --color-o:       #61dafb;   /* React blue  — Player O */
+  --color-accent:  #ffd166;   /* Accent / win highlight */
+
+  /* Cell states */
+  --cell-bg:       #ffffff;
+  --cell-hover:    #eef2ff;
+  --win-highlight: #ffd166;
+  --win-bg:        #fff8e1;
+
+  /* Button */
+  --button-bg:     #e87a41;
+  --button-text:   #ffffff;
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+  --bg-primary:    #1a1a1a;
+  --bg-secondary:  #282c34;
+  --text-primary:  #f5f5f5;
+  --text-muted:    #9ca3af;
+  --border-color:  #3f3f46;
+
+  --color-x:       #ff9a6c;
+  --color-o:       #61dafb;
+  --color-accent:  #ffd166;
+
+  --cell-bg:       #2d2d2d;
+  --cell-hover:    #3b3b4f;
+  --win-highlight: #b8860b;
+  --win-bg:        #2d2505;
+
+  --button-bg:     #e87a41;
+  --button-text:   #ffffff;
 }
 
+/* ============================================================
+   Global resets / base
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   App shell
+   ============================================================ */
 .App {
   text-align: center;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* ===== Top navigation bar ===== */
 .App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  padding: 14px 24px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.App-header__brand {
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  letter-spacing: -0.01em;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
+/* ===== Theme toggle button ===== */
 .theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 7px 16px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
 }
 
 .theme-toggle:active {
   transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ===== Main content area ===== */
+.App-main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 16px;
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 480px) {
+  .App-header {
+    padding: 10px 14px;
+  }
+  .App-header__brand {
+    font-size: 1rem;
+  }
+  .App-main {
+    padding: 20px 8px;
   }
 }

@@ -1,0 +1,69 @@
+/* ===== Scoreboard ===== */
+.scoreboard {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.scoreboard__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 14px 22px;
+  min-width: 80px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.scoreboard__item--x {
+  border-color: var(--color-x);
+}
+
+.scoreboard__item--o {
+  border-color: var(--color-o);
+}
+
+.scoreboard__item--draw {
+  border-color: var(--border-color);
+}
+
+.scoreboard__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.scoreboard__item--x .scoreboard__value {
+  color: var(--color-x);
+}
+
+.scoreboard__item--o .scoreboard__value {
+  color: var(--color-o);
+}
+
+.scoreboard__item--draw .scoreboard__value {
+  color: var(--text-primary);
+}
+
+.scoreboard__value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (max-width: 400px) {
+  .scoreboard__item {
+    padding: 10px 14px;
+    min-width: 64px;
+  }
+  .scoreboard__value {
+    font-size: 1.6rem;
+  }
+}

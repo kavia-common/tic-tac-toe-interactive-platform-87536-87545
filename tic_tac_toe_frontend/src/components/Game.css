@@ -1,0 +1,102 @@
+/* ===== Game Container ===== */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 40px;
+  gap: 20px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.game__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ===== Status Bar ===== */
+.game__status {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 10px 24px;
+  min-width: 220px;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+.game__status--over {
+  color: var(--color-accent);
+  background-color: var(--win-bg);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Control Buttons ===== */
+.game__controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game__btn {
+  padding: 11px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.02em;
+}
+
+.game__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.game__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game__btn--primary {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+}
+
+.game__btn--secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  box-shadow: none;
+}
+
+.game__btn--secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: none;
+}
+
+@media (max-width: 400px) {
+  .game__title {
+    font-size: 1.8rem;
+  }
+  .game__btn {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+  }
+}

@@ -1,0 +1,19 @@
+/* ===== Game Board Grid ===== */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+  padding: 16px;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@media (max-width: 400px) {
+  .board {
+    gap: 6px;
+    padding: 10px;
+  }
+}

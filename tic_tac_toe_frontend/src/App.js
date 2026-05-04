@@ -1,47 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import Game from './components/Game';
 import './App.css';
 
+/**
+ * Root application component.
+ *
+ * Provides:
+ * - Light/dark theme management (persisted on <html> via data-theme attribute)
+ * - A top navigation bar with the app brand name and theme toggle button
+ * - The main <Game /> component that handles all Tic-Tac-Toe logic
+ */
 // PUBLIC_INTERFACE
 function App() {
   const [theme, setTheme] = useState('light');
 
-  // Effect to apply theme to document element
+  /* Apply the current theme to the root <html> element */
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  /**
+   * Toggle between light and dark themes.
+   */
   // PUBLIC_INTERFACE
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (
     <div className="App">
+      {/* ── Top navigation bar ── */}
       <header className="App-header">
-        <button 
-          className="theme-toggle" 
+        <span className="App-header__brand">🎮 Tic-Tac-Toe</span>
+        <button
+          className="theme-toggle"
           onClick={toggleTheme}
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
         >
           {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
         </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+
+      {/* ── Main game area ── */}
+      <main className="App-main">
+        <Game />
+      </main>
     </div>
   );
 }
