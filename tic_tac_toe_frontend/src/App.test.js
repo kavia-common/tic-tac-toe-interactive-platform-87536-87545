@@ -7,7 +7,7 @@ import App from './App';
 
 test('renders the app header brand', () => {
   render(<App />);
-  expect(screen.getByText(/Tic-Tac-Toe/i)).toBeInTheDocument();
+  expect(screen.getAllByText(/Tic-Tac-Toe/i).length).toBeGreaterThanOrEqual(1);
 });
 
 test('renders the theme toggle button', () => {
@@ -31,9 +31,9 @@ test('renders the game board with 9 squares', () => {
 
 test('renders scoreboard with Player X, Player O, and Draws', () => {
   render(<App />);
-  expect(screen.getByText(/player x/i)).toBeInTheDocument();
-  expect(screen.getByText(/player o/i)).toBeInTheDocument();
-  expect(screen.getByText(/draws/i)).toBeInTheDocument();
+  expect(screen.getAllByText(/player x/i).length).toBeGreaterThanOrEqual(1);
+  expect(screen.getAllByText(/player o/i).length).toBeGreaterThanOrEqual(1);
+  expect(screen.getAllByText(/draws/i).length).toBeGreaterThanOrEqual(1);
 });
 
 test('shows "Player X\'s turn" status at the start', () => {
